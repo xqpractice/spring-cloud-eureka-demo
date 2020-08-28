@@ -2,7 +2,33 @@ version: '3'
 
 services:
   eureka-service:
-    build: ./spring-cloud-eureka
+    build: ./eureka-server
     hostname: eureka-service
     ports:
-      - 10000:10000
+      - 18761:18761
+
+  eureka-client-one:
+    build: ./eureka-client-one
+    hostname: eureka-client-one
+    depends_on:
+      - eureka-service
+    links:
+      - eureka-service
+    ports:
+      - "18001:18001"
+    environment:
+      - INSTANCE_HOST=eureka-client-one
+      - EUREKA_SERVER_URL=http://eureka-service:18761/eureka/
+
+  eureka-client-two:
+    build: ./eureka-client-two
+    hostname: eureka-client-two
+    depends_on:
+      - eureka-service
+    links:
+      - eureka-service
+    ports:
+      - 18002:18002
+    environment:
+      - INSTANCE_HOST=eureka-client-two
+      - EUREKA_SERVER_URL=http://eureka-service:18761/eureka/
