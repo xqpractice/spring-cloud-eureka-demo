@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  eureka-service:
+    build: ./spring-cloud-eureka
+    hostname: eureka-service
+    ports:
+      - 10000:10000
+    command: [ sh, -c, "java -Duser.timezone=GMT+08:00 -Djava.security.egd=file:/dev/./urandom -jar spring-cloud-eureka-0.0.1.jar" ]
+
+  eureka-client:
+    build: ./spring-cloud-eureka-client
+    hostname: eureka-client
+    ports:
+      - 10001:10000
+    command: [ sh, -c, "java -Duser.timezone=GMT+08:00 -Djava.security.egd=file:/dev/./urandom -jar spring-cloud-eureka-client-0.0.1.jar" ]
+
+  spring-cloud-consul:
+    build: ./spring-cloud-consul
+    hostname: spring-cloud-consul
+    ports:
+      - 20001:20000
+    command: [ sh, -c, "java -Duser.timezone=GMT+08:00 -Djava.security.egd=file:/dev/./urandom -jar spring-cloud-consul-0.0.1.jar" ]
+
+networks:
+  default:
+    external:
+      name: local-network

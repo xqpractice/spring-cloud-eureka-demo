@@ -1,0 +1,14 @@
+allprojects {
+	repositories {
+        mavenCentral()
+	}
+}
+
+subprojects {
+	apply plugin: 'java'
+
+	group = 'com.xqcao.practice'
+	version = '0.0.1-SNAPSHOT'
+
+	sourceCompatibility = 1.11
+}
