@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  eureka-client-one:
+    build: .
+    hostname: eureka-client-one
+    ports:
+      - "18001:18001"
+    environment:
+      - INSTANCE_HOST=192.168.0.104
+      - EUREKA_SERVER_URL=http://192.168.0.104:18761/eureka/

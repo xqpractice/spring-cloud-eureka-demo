@@ -2,7 +2,7 @@ version: '3'
 
 services:
   eureka-service:
-    build: ./spring-cloud-eureka
+    build: .
     hostname: eureka-service
     ports:
-      - 10000:10000
+      - 18761:18761

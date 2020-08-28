@@ -8,7 +8,7 @@ subprojects {
 	apply plugin: 'java'
 
 	group = 'com.xqcao.practice'
-	version = '0.0.1-SNAPSHOT'
+	version = '0.0.1'
 
 	sourceCompatibility = 1.11
 }
